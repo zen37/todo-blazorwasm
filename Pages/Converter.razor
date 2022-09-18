@@ -1,0 +1,46 @@
+﻿@page "/converter"
+
+<h1>Base 64 Converter</h1>
+
+<div class="form-group">
+    <textarea class="form-control col-md-6" placeholder= "Non Base64 / bind-value=nonbase64_2 bind-value:event=oninput" @bind-value="nonbase64_2" @bind-value:event="oninput"></textarea>
+    <small class = "form-text text-0muted">Encode this</small>
+</div>
+<div class="form-group">
+    <textarea class="form-control col-md-6" placeholder= "Non Base64 / bind=nonbase64" @bind="nonbase64"></textarea>
+    <small class = "form-text text-0muted">Encode this</small>
+</div>
+
+<button class="btn btn-primary" @onclick="convert">
+    <span class = "oi oi-arrow-thick-bottom"></span> Encode (class="btn btn-primary")
+</button>
+<button class="btn btn-primary" type ="button" @onclick="convert2">
+    <span class = "oi oi-arrow-thick-bottom"></span> Encode (class="btn btn-primary"  type ="button")
+</button>
+
+<div class="form-group">
+    <textarea class="form-control col-md-6" placeholder= "Base64" @bind="base64"></textarea>
+</div>
+<button>
+    Decode (only tag button)
+</button>
+
+@code {
+    private string? nonbase64;
+    
+    private string? nonbase64_2;
+    private string? base64;
+
+    private void convert() {
+        var textByte = Encoding.UTF8.GetBytes(nonbase64);
+        base64 = Convert.ToBase64String(textByte);
+
+    }
+
+        private void convert2() {
+        var textByte = Encoding.UTF8.GetBytes(nonbase64_2);
+        base64 = Convert.ToBase64String(textByte);
+
+    }
+
+}
