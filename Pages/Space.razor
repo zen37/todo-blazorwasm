@@ -1,0 +1,35 @@
+@page "/space"
+@inject HttpClient Http
+
+<PageTitle>SpaceX Launches</PageTitle>
+
+<h1>SpaceX Launches</h1>
+
+<p>This component demonstrates fetching data from an API.</p>
+
+@if (launches == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var launch in launches)
+            {
+                <tr>
+                    <td>@launch.Id</td>
+                    <td>@launch.launchDate</td>
+                    <td>@launch.Mission</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
